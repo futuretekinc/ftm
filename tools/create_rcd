@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# $1 - dir
+
+CURDIR=`pwd`
+
+if [ -e $1/etc/init.d ]; then
+	if [ ! -e $1/etc/rc.d ]; then
+		mkdir -p $1/etc/rc.d
+	fi
+fi
+
+cd $1/etc/init.d
+FILES=`ls`
+cd $CURDIR
+
+for file in $FILES ; do
+	START=`cat $1/etc/init.d/$file | grep "START=" | sed "s/START=//"`
+	STOP=`cat $1/etc/init.d/$file | grep "STOP=" | sed "s/STOP=//"`
+
+	if [ -e "$1/etc/rc.d/S$START$file" ]; then
+		rm -f "$1/etc/rc.d/S$START$file"
+	fi
+
+	if [ -n "$START" ]; then
+		ln -s "../init.d/$file" "$1/etc/rc.d/S$START$file"
+	fi
+
+	if [ -e "$1/etc/rc.d/K$STOP$file" ]; then
+		rm -f "$1/etc/rc.d/K$STOP$file"
+	fi
+
+	if [ -n "$STOP" ]; then
+		ln -s "../init.d/$file" "$1/etc/rc.d/K$STOP$file"
+	fi
+done

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# $1 - dir
+# $2 - model
+
+FILES=`find $1 -name "*"`
+for file in $FILES ; do
+	if [ ! -d $file ]; then
+		mv $file $file.$2
+	fi
+done

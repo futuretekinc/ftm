@@ -1,0 +1,61 @@
+#!/bin/bash
+
+# $1 - source dir
+# $2 - destination dir
+# $3 - platform
+# $4 - model
+
+copy_files() {
+	sfname=`echo $1 | awk -F '/' '{print $NF}'`                                                                         
+	sdname=`echo $1 | sed -e "s/$sfname//g"`                                                                            
+	dfname=`echo $sfname | sed -e "s/.$4//g"`                                                                              
+	s2=`echo $2 | sed -e "s/\//:/g"`
+	s3=`echo $3 | sed -e "s/\//:/g"`	
+	ddname=`echo $sdname | sed -e "s/\//:/g" -e "s/$s2/$s3/g" -e "s/:/\//g"`
+
+	if [ ! -e $ddname ]; then                                                                                              
+		mkdir -p $ddname
+	fi                                                                                                                    
+	cp -f $1 $ddname/$dfname
+}
+
+if [ $# -ge 3 ]; then
+	FILES=`find $1 -name "*"`
+	for file in $FILES ; do
+		if [ ! -d $file ]; then
+			case $file in
+			*.common)
+				copy_files $file $1 $2 "common"
+				;;
+			esac
+		fi
+	done
+	for file in $FILES ; do
+		if [ ! -d $file ]; then
+			case $file in
+			*.$3)
+				if [ $# -ge 3 ]; then
+					copy_files $file $1 $2 $3
+				fi
+				;;
+			esac
+		fi
+	done
+	for file in $FILES ; do
+		if [ ! -d $file ]; then
+			case $file in
+			*.$4)
+				if [ $# -ge 4 ]; then
+					copy_files $file $1 $2 $4
+				fi
+				;;
+			esac
+		fi
+	done
+else
+	echo "Usage : $0 <src_dir> <dst_dir> <platform> [<model>]"
+	echo "     src_dir - Source directory"
+	echo "     dst_dir - Target Directory"
+	echo "    platform - Target platform.(ftm-50s, ftm-100s, ...)"
+	echo "       model - Target model(ftm-50s-lgu+, ftm-50s-tpgw, ...)"
+fi
