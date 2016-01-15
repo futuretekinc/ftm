@@ -5,6 +5,20 @@
 # $3 - platform
 # $4 - model
 
+link_files() {
+	sfname=`echo $1 | awk -F '/' '{print $NF}'`                                                                         
+	sdname=`echo $1 | sed -e "s/$sfname//g"`                                                                            
+	dfname=`echo $sfname | sed -e "s/.$4//g"`                                                                              
+	s2=`echo $2 | sed -e "s/\//:/g"`
+	s3=`echo $3 | sed -e "s/\//:/g"`	
+	ddname=`echo $sdname | sed -e "s/\//:/g" -e "s/$s2/$s3/g" -e "s/:/\//g"`
+
+	if [ ! -e $ddname ]; then                                                                                              
+		mkdir -p $ddname
+	fi                                                                                                                    
+	ln -s `readlink -f $1` $ddname/$dfname
+}
+
 copy_files() {
 	sfname=`echo $1 | awk -F '/' '{print $NF}'`                                                                         
 	sdname=`echo $1 | sed -e "s/$sfname//g"`                                                                            
@@ -25,7 +39,11 @@ if [ $# -ge 3 ]; then
 		if [ ! -d $file ]; then
 			case $file in
 			*.common)
-				copy_files $file $1 $2 "common"
+				if [ -L $file ]; then
+					link_files $file $1 $2 "common"
+				else
+					copy_files $file $1 $2 "common"
+				fi
 				;;
 			esac
 		fi
@@ -35,7 +53,11 @@ if [ $# -ge 3 ]; then
 			case $file in
 			*.$3)
 				if [ $# -ge 3 ]; then
-					copy_files $file $1 $2 $3
+					if [ -L $file ]; then
+						link_files $file $1 $2 $3
+					else
+						copy_files $file $1 $2 $3
+					fi
 				fi
 				;;
 			esac
@@ -46,7 +68,11 @@ if [ $# -ge 3 ]; then
 			case $file in
 			*.$4)
 				if [ $# -ge 4 ]; then
-					copy_files $file $1 $2 $4
+					if [ -L $file ]; then
+						link_files $file $1 $2 $4
+					else
+						copy_files $file $1 $2 $4
+					fi
 				fi
 				;;
 			esac

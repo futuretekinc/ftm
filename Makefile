@@ -32,6 +32,7 @@ phase2-${CONFIG_UDHCPD} += udhcpd
 phase2-${CONFIG_WEBADMIN} += webadmin 
 phase2-${CONFIG_MOSQUITTO} += mosquitto 
 phase2-${CONFIG_BIND} += bind
+phase2-${CONFIG_FTPD} += ftpd
 
 # Wireless applications
 phase2-${CONFIG_WIRELESS_TOOLS} += wireless_tools 
