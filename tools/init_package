@@ -1,0 +1,55 @@
+#!/bin/sh
+
+# $1 - package name
+# $2 - respository
+
+package=$1
+repo=$2
+
+package_file=`ls ${repo} | grep "${package}\."`
+
+echo "package_fie = $package_file"
+if [ -z ${repo}/${package_file} ]; then
+	echo "package file not found!"
+	return
+
+fi
+
+if [ -e ${package} ]; then
+	compressed_package_date=`stat -c %Y ${repo}/${package_file}`
+	current_package_date=`stat -c %Y ${package}/.ftm/init`
+
+	if [ ${compressed_package_date} -gt ${current_package_date} ]; then
+		rm -rf ${package}				
+	fi
+fi
+
+if [ ! -e ${package} ]; then
+	case ${package_file} in
+		*.tar.gz)
+			tar xvfz ${repo}/${package_file}
+		;;
+		*.tar.bz2)
+			tar xvfj ${repo}/${package_file}
+		;;
+		*.sz)
+			tar xvfJ ${repo}/${package_file}
+		;;
+		*.zip)
+			unzip ${repo}/${package_file}
+		;;
+		*)
+			echo "Unknown package type!"
+		;;
+	esac
+
+	if [ -d patch ]; then
+		patch -p0 < patch/${package}.diff
+	fi
+
+	mkdir -p ${package}/.ftm
+	rm -rf ${package}/.ftm/*
+	echo `date` > ${package}/.ftm/init
+	
+fi
+

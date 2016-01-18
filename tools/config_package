@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# $1 target package directory
+
+package=$1
+options=$2
+
+if [ ! -e ${package}/.ftm/config ]; then
+	cd ${package}
+	if [ -e 'configure' ]; then
+		./configure ${options}		
+	elif [ -e 'Configure' ]; then
+		./Configure ${options}
+	fi
+
+	echo `date` > .ftm/config
+fi
+
