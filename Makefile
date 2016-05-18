@@ -14,7 +14,7 @@ phase1-${CONFIG_LIBPCAP} += libpcap
 phase1-${CONFIG_LIBCONFIG} += libconfig
 phase1-${CONFIG_OPENSSL} += openssl 
 phase1-${CONFIG_SQLITE} += sqlite
-phase1-${CONFIG_MxML} += mxml
+phase1-${CONFIG_MXML} += mxml
 phase1-${CONFIG_CJSON} += cjson
 
 phase2-y=
