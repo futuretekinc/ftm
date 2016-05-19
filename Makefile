@@ -12,6 +12,7 @@ phase1-${CONFIG_ZLIB} += zlib
 phase1-${CONFIG_QDECODER} += qdecoder 
 phase1-${CONFIG_LIBPCAP} += libpcap
 phase1-${CONFIG_LIBCONFIG} += libconfig
+phase1-${CONFIG_LIBMODBUS} += libmodbus
 phase1-${CONFIG_OPENSSL} += openssl 
 phase1-${CONFIG_SQLITE} += sqlite
 phase1-${CONFIG_MXML} += mxml
