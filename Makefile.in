@@ -14,7 +14,7 @@ export STRIP=${CROSS}strip
 export RANLIB=${CROSS}ranlib
 
 export PKGDIR=${TOPDIR}/pkg
-export BUILDDIR=${TOPDIR}/build
+export BUILDDIR=${TOPDIR}/build/${CONFIG_PLATFORM}
 export DESTDIR=${BUILDDIR}/_root
 export PREFIX=/usr
 
