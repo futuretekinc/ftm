@@ -52,7 +52,7 @@ define clear_config_package
 endef
 
 define build_package
-	make -C $1 ${BUILD_OPTIONS} 
+	make -C $1 ${BUILD_OPTIONS} ${CFLAGS}
 endef
 
 define install_package
