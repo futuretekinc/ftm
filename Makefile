@@ -44,15 +44,16 @@ phase2-${CONFIG_WIRELESS_TOOLS} += wireless_tools
 phase2-${CONFIG_WIFI} += wifi 
 phase2-${CONFIG_AP} += ap
 
-# Wireless WAN
-phase2-${CONFIG_LGUPLUS} += lg-uplus
-
 # Configuration Utilities
 phase2-${CONFIG_LUA} += lua 
 phase2-${CONFIG_UCI} += uci 
 
 # Debugging Utilities
 phase2-${CONFIG_TCPDUMP} += tcpdump 
+
+# Model
+phase2-${CONFIG_LGUPLUS} += lg-uplus
+phase2-${CONFIG_WIRED} += ${CONFIG_PLATFORM}-wired
 
 LIBS=${phase1-y}
 APPS=${phase2-y}
@@ -132,6 +133,14 @@ install_phase2: build_phase2
 	fi
 
 install: install_phase2
+
+target:
+	sudo mount /dev/sdb1 mmc
+	sudo rm -rf mmc/*
+	sudo tools/make_target mmc
+	sudo tools/make_dev mmc
+	sudo cp -r build/ftm-50s/_root/* mmc/
+	sudo umount mmc
 
 clean:
 	( \
