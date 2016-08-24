@@ -126,7 +126,7 @@ install_phase2: build_phase2
 			make -C $$app install DESTDIR=${DESTDIR} ; \
 		done; \
 	)
-#	tools/create_rcd ${DESTDIR}
+	tools/create_rcd ${DESTDIR}
 #	${TOPDIR}/tools/make_image ${DESTDIR} ${BUILDDIR}/rootfs.img
 
 #	if [ -d ${DESTDIR} ]; then \
