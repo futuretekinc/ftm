@@ -39,7 +39,7 @@ phase2-${CONFIG_WEBADMIN} += webadmin
 phase2-${CONFIG_MOSQUITTO} += mosquitto 
 phase2-${CONFIG_BIND} += bind
 phase2-${CONFIG_FTPD} += ftpd
-
+phase2-${CONFIG_FUTURESYSTEM_SSLVPN} += futuresystem_sslvpn
 # Wireless applications
 phase2-${CONFIG_WIRELESS_TOOLS} += wireless_tools 
 phase2-${CONFIG_WIFI} += wifi 

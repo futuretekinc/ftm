@@ -15,8 +15,8 @@ FILES=`ls`
 cd $CURDIR
 
 for file in $FILES ; do
-	START=`cat $1/etc/init.d/$file | grep "START=" | sed "s/START=//"`
-	STOP=`cat $1/etc/init.d/$file | grep "STOP=" | sed "s/STOP=//"`
+	START=`cat $1/etc/init.d/$file | grep "START=" | sed "s/START=//" | tr -d " "`
+	STOP=`cat $1/etc/init.d/$file | grep "STOP=" | sed "s/STOP=//" | tr -d " "`
 
 	if [ -e "$1/etc/rc.d/S$START$file" ]; then
 		rm -f "$1/etc/rc.d/S$START$file"
