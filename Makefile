@@ -23,6 +23,7 @@ phase2-y=
 phase2-${CONFIG_BASE} += base 
 phase2-${CONFIG_BUSYBOX} += busybox 
 phase2-${CONFIG_CRON} += cron
+phase2-$(CONFIG_GPIO) += gpio
 
 # Network Applications
 phase2-${CONFIG_NETWORK} += network 
@@ -167,6 +168,7 @@ image:
 	sudo tools/make_target mmc
 	sudo tools/make_dev mmc
 	sudo cp -r build/$(PLATFORM)/_root/* mmc/
+	sudo cp -r mmc/etc/config/* mmc/etc/default/
 	sudo umount mmc
 
 clean:

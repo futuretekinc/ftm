@@ -8,7 +8,7 @@
 link_files() {
 	sfname=`echo $1 | awk -F '/' '{print $NF}'`                                                                         
 	sdname=`echo $1 | sed -e "s/$sfname//g"`                                                                            
-	dfname=`echo $sfname | sed -e "s/.$4//g"`                                                                              
+	dfname=`echo $sfname | sed -e "s/\.$4//"`                                                                              
 	s2=`echo $2 | sed -e "s/\//:/g"`
 	s3=`echo $3 | sed -e "s/\//:/g"`	
 	ddname=`echo $sdname | sed -e "s/\//:/g" -e "s/$s2/$s3/g" -e "s/:/\//g"`
@@ -22,7 +22,7 @@ link_files() {
 copy_files() {
 	sfname=`echo $1 | awk -F '/' '{print $NF}'`                                                                         
 	sdname=`echo $1 | sed -e "s/$sfname//g"`                                                                            
-	dfname=`echo $sfname | sed -e "s/.$4//g"`                                                                              
+	dfname=`echo $sfname | sed -e "s/\.$4//"`                                                                              
 	s2=`echo $2 | sed -e "s/\//:/g"`
 	s3=`echo $3 | sed -e "s/\//:/g"`	
 	ddname=`echo $sdname | sed -e "s/\//:/g" -e "s/$s2/$s3/g" -e "s/:/\//g"`
