@@ -16,21 +16,26 @@ cd $CURDIR
 
 for file in $FILES ; do
 	START=`cat $1/etc/init.d/$file | grep "START=" | sed "s/START=//" | tr -d " "`
+	[ -n "${START}" ] || START=`cat $1/etc/init.d/$file | grep "BOOT=" | sed "s/BOOT=//" | tr -d " "`
 	STOP=`cat $1/etc/init.d/$file | grep "STOP=" | sed "s/STOP=//" | tr -d " "`
 
 	if [ -e "$1/etc/rc.d/S$START$file" ]; then
+		echo "rm -f $1/etc/rc.d/S$START$file"
 		rm -f "$1/etc/rc.d/S$START$file"
 	fi
 
 	if [ -n "$START" ]; then
+		echo "ln -s ../init.d/$file $1/etc/rc.d/S$START$file"
 		ln -s "../init.d/$file" "$1/etc/rc.d/S$START$file"
 	fi
 
 	if [ -e "$1/etc/rc.d/K$STOP$file" ]; then
+		echo "rm -f $1/etc/rc.d/K$STOP$file"
 		rm -f "$1/etc/rc.d/K$STOP$file"
 	fi
 
 	if [ -n "$STOP" ]; then
+		echo "ln -s ../init.d/$file $1/etc/rc.d/K$STOP$file"
 		ln -s "../init.d/$file" "$1/etc/rc.d/K$STOP$file"
 	fi
 done
