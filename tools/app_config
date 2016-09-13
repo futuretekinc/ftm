@@ -1,0 +1,26 @@
+#!/bin/sh
+
+APP=$1
+PKGDIR=$2
+DESTDIR=$3
+
+APP_DATE=
+PKG_DATE=
+
+if [ -d ${APP} ]
+then
+	APP_DATE=$(stat -c %Y ${APP})		
+	PKG_DATE=$(stat -c %Y ${PKGDIR}/${APP}-pkg.tar.gz)
+
+	echo "${APP_DATE} < ${PKG_DATE}"
+	if [ ${APP_DATE} -lt ${PKG_DATE} ]
+	then
+		rm -rf ${APP}
+		tar xvfz ${PKGDIR}/${APP}-pkg.tar.gz
+		make -C ${APP} config DESTDIR=${DESTDIR}
+	fi
+else
+	tar xvfz ${PKGDIR}/${APP}-pkg.tar.gz
+	make -C ${APP} config DESTDIR=${DESTDIR}
+fi
+

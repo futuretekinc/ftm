@@ -69,8 +69,7 @@ config_phase1:
 	( \
 		cd ${BUILDDIR}; \
 		for lib in $(LIBS); do \
-			[ -d $$lib ] || tar xvfz ${PKGDIR}/$$lib-pkg.tar.gz ;\
-			make -C $$lib config DESTDIR=${DESTDIR} ; \
+			${TOPDIR}/tools/app_config $$lib ${PKGDIR} ${DESTDIR};\
 		done ; \
 	) 
 
@@ -79,10 +78,10 @@ config_phase2: install_phase1
 	( \
 		cd ${BUILDDIR}; \
 		for app in $(APPS); do \
-			[ -d $$app ] || tar xvfz ${PKGDIR}/$$app-pkg.tar.gz ; \
-			make -C $$app config DESTDIR=${DESTDIR} ; \
+			${TOPDIR}/tools/app_config $$app ${PKGDIR} ${DESTDIR};\
 		done; \
 	)
+
 
 build_phase1:  config_phase1
 	( \
