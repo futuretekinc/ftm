@@ -34,6 +34,7 @@ phase2-${CONFIG_DROPBEAR} += dropbear
 phase2-${CONFIG_STRONGSWAN} += strongswan 
 phase2-${CONFIG_HOTPLUG2} += hotplug2 
 phase2-${CONFIG_NTPCLIENT} += ntpclient 
+phase2-${CONFIG_HTTPD} += httpd 
 phase2-${CONFIG_LIGHTTPD} += lighttpd 
 phase2-${CONFIG_UDHCPD} += udhcpd
 phase2-${CONFIG_WEBADMIN} += webadmin 
