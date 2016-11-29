@@ -47,6 +47,10 @@ phase2-${CONFIG_WIRELESS_TOOLS} += wireless_tools
 phase2-${CONFIG_WIFI} += wifi 
 phase2-${CONFIG_AP} += ap
 
+# Daliworks Thingplus-Gateway
+phase2-${CONFIG_NODE} += node
+phase2-${CONFIG_TPGW} += tpgw
+
 # Configuration Utilities
 phase2-${CONFIG_LUA} += lua 
 phase2-${CONFIG_UCI} += uci 
