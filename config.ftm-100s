@@ -1,5 +1,6 @@
 CONFIG_PLATFORM=ftm-100s
-CONFIG_MODEL=ftm-100s-wired
+CONFIG_MODEL=ftm-100s-lgu+
+#CONFIG_MODEL=ftm-100s-wired
 CONFIG_CROSS_COMPILE=arm-openwrt-linux-uclibcgnueabi-
 CONFIG_HOST=arm-openwrt-linux-uclibcgnueabi
 
@@ -20,6 +21,7 @@ CONFIG_CURL=n
 CONFIG_BASE=y
 CONFIG_BUSYBOX=y
 CONFIG_CRON=y
+CONFIG_GPIO=n
 
 # Network Aplications
 CONFIG_NETWORK=y
@@ -39,7 +41,8 @@ CONFIG_FTPD=n
 CONFIG_FUTURESYSTEM_SSLVPN=n
 
 # Web Administrator
-CONFIG_LIGHTTPD=y
+CONFIG_HTTPD=y
+CONFIG_LIGHTTPD=n
 CONFIG_WEBADMIN=y
 
 # Wifi Supported
@@ -59,5 +62,5 @@ CONFIG_NODE=n
 CONFIG_TPGW=n
 
 # LG U+
-CONFIG_LGUPLUS=n
+CONFIG_LGUPLUS=y
 
