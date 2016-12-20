@@ -13,6 +13,7 @@ phase1-${CONFIG_QDECODER} += qdecoder
 phase1-${CONFIG_LIBPCAP} += libpcap
 phase1-${CONFIG_LIBCONFIG} += libconfig
 phase1-${CONFIG_LIBMODBUS} += libmodbus
+phase1-${CONFIG_LIBUUID} += libuuid
 phase1-${CONFIG_OPENSSL} += openssl 
 phase1-${CONFIG_SQLITE} += sqlite
 phase1-${CONFIG_MXML} += mxml
@@ -42,6 +43,8 @@ phase2-${CONFIG_MOSQUITTO} += mosquitto
 phase2-${CONFIG_BIND} += bind
 phase2-${CONFIG_FTPD} += ftpd
 phase2-${CONFIG_FUTURESYSTEM_SSLVPN} += futuresystem_sslvpn
+phase2-${CONFIG_PYTHON} += python
+
 # Wireless applications
 phase2-${CONFIG_WIRELESS_TOOLS} += wireless_tools 
 phase2-${CONFIG_WIFI} += wifi 

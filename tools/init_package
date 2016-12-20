@@ -32,6 +32,9 @@ if [ ! -e ${package} ]; then
 		*.tar.bz2)
 			tar xvfj ${repo}/${package_file}
 		;;
+		*.tar.xz)
+			tar xvfJ ${repo}/${package_file}
+		;;
 		*.sz)
 			tar xvfJ ${repo}/${package_file}
 		;;

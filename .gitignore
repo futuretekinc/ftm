@@ -3,3 +3,4 @@ build
 _root
 *.log
 work
+.config

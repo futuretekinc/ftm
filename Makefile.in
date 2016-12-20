@@ -4,6 +4,7 @@ export PLATFORM=${CONFIG_PLATFORM}
 export MODEL=${CONFIG_MODEL}
 export CROSS=${CONFIG_CROSS_COMPILE}
 export HOST=${CONFIG_HOST}
+export BUILD=${CONFIG_BUILD}
 export TARGETMACH=arm-linux
 export CC=${CROSS}gcc
 export CXX=${CROSS}g++
