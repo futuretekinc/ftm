@@ -35,7 +35,7 @@ define reinit_package
 endef
 
 define config_package
-	${TOPDIR}/tools/config_package $1 "$2"
+	${TOPDIR}/tools/config_package $1 $2
 endef
 
 define reconfig_package

@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# $1 - package name
+# $2 - respository
+
+package=$1
+repo=$2
+
+if [ -d patch ]; then
+	patch -p0 < patch/${package}.diff
+fi
+

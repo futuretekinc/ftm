@@ -19,12 +19,14 @@ phase1-${CONFIG_SQLITE} += sqlite
 phase1-${CONFIG_MXML} += mxml
 phase1-${CONFIG_CJSON} += cjson
 phase1-${CONFIG_CURL} += curl
+phase1-${CONFIG_NCURSES} += ncurses
 
 phase2-y=
 phase2-${CONFIG_BASE} += base 
 phase2-${CONFIG_BUSYBOX} += busybox 
 phase2-${CONFIG_CRON} += cron
 phase2-$(CONFIG_GPIO) += gpio
+phase2-${CONFIG_AZURE_SDK} += azure-iot-sdk
 
 # Network Applications
 phase2-${CONFIG_NETWORK} += network 

@@ -3,14 +3,17 @@
 # $1 target package directory
 
 package=$1
-options=$2
+shift
+options=$@
 
 if [ ! -e ${package}/.ftm/config ]; then
 	cd ${package}
 	if [ -e 'configure' ]; then
-		./configure ${options}		
+		./configure ${options}
 	elif [ -e 'Configure' ]; then
 		./Configure ${options}
+	elif [ -e 'CMakeLists.txt' ]; then
+		cmake ${options} .
 	fi
 
 	echo `date` > .ftm/config
