@@ -1,3 +1,4 @@
+# 20170323
 TOPDIR=${CURDIR}
 
 export TOPDIR
