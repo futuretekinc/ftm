@@ -1,73 +1,75 @@
+# 20170323
 TOPDIR=${CURDIR}
 
 export TOPDIR
 
 include Makefile.in
 
-phase1-y= 
-#phase1-${CONFIG_GMP} += gmp
-#phase1-${CONFIG_PCRE} += pcre 
-#phase1-${CONFIG_LIBUBOX} += libubox 
-#phase1-${CONFIG_ZLIB} += zlib 
-#phase1-${CONFIG_QDECODER} += qdecoder 
-#phase1-${CONFIG_LIBPCAP} += libpcap
-#phase1-${CONFIG_LIBCONFIG} += libconfig
-#phase1-${CONFIG_LIBMODBUS} += libmodbus
-#phase1-${CONFIG_LIBUUID} += libuuid
-#phase1-${CONFIG_LIBESTR} += libestr
+phase1-${CONFIG_GMP} += gmp
+phase1-${CONFIG_PCRE} += pcre 
+phase1-${CONFIG_LIBUBOX} += libubox 
+phase1-${CONFIG_ZLIB} += zlib 
+phase1-${CONFIG_QDECODER} += qdecoder 
+phase1-${CONFIG_LIBPCAP} += libpcap
+phase1-${CONFIG_LIBCONFIG} += libconfig
+phase1-${CONFIG_LIBMODBUS} += libmodbus
 phase1-${CONFIG_LIBXML2} += libxml2
-#phase1-${CONFIG_OPENSSL} += openssl 
-#phase1-${CONFIG_SQLITE} += sqlite
-#phase1-${CONFIG_MXML} += mxml
-#phase1-${CONFIG_CJSON} += cjson
-#phase1-${CONFIG_CURL} += curl
-#phase1-${CONFIG_NCURSES} += ncurses
-#
-#phase2-y=
-#phase2-${CONFIG_BASE} += base 
-#phase2-${CONFIG_BUSYBOX} += busybox 
-#phase2-${CONFIG_CRON} += cron
-#phase2-$(CONFIG_GPIO) += gpio
-#phase2-${CONFIG_AZURE_SDK} += azure-iot-sdk
-#
-## Network Applications
-#phase2-${CONFIG_NETWORK} += network 
-#phase2-${CONFIG_IPTABLES} += iptables 
-#phase2-${CONFIG_NET_SNMP} += net-snmp
-#phase2-${CONFIG_OPENSSH} += openssh 
-#phase2-${CONFIG_DROPBEAR} += dropbear 
-#phase2-${CONFIG_STRONGSWAN} += strongswan 
-#phase2-${CONFIG_HOTPLUG2} += hotplug2 
-#phase2-${CONFIG_NTPCLIENT} += ntpclient 
-#phase2-${CONFIG_HTTPD} += httpd 
-#phase2-${CONFIG_LIGHTTPD} += lighttpd 
-#phase2-${CONFIG_UDHCPD} += udhcpd
-#phase2-${CONFIG_WEBADMIN} += webadmin 
-#phase2-${CONFIG_MOSQUITTO} += mosquitto 
-#phase2-${CONFIG_BIND} += bind
-#phase2-${CONFIG_FTPD} += ftpd
-#phase2-${CONFIG_FUTURESYSTEM_SSLVPN} += futuresystem_sslvpn
-#phase2-${CONFIG_PYTHON} += python
-#
-## Wireless applications
-#phase2-${CONFIG_WIRELESS_TOOLS} += wireless_tools 
-#phase2-${CONFIG_WIFI} += wifi 
-#phase2-${CONFIG_AP} += ap
-#
-## Daliworks Thingplus-Gateway
-#phase2-${CONFIG_NODE} += node
-#phase2-${CONFIG_TPGW} += tpgw
-#
-## Configuration Utilities
-#phase2-${CONFIG_LUA} += lua 
-#phase2-${CONFIG_UCI} += uci 
-#
-## Debugging Utilities
-#phase2-${CONFIG_TCPDUMP} += tcpdump 
-#
-## Model
-#phase2-${CONFIG_LGUPLUS} += lg-uplus
-#phase2-${CONFIG_WIRED} += ${CONFIG_PLATFORM}-wired
+phase1-${CONFIG_LIBUUID} += libuuid
+phase1-${CONFIG_OPENSSL} += openssl 
+phase1-${CONFIG_SQLITE} += sqlite
+phase1-${CONFIG_MXML} += mxml
+phase1-${CONFIG_CJSON} += cjson
+phase1-${CONFIG_CURL} += curl
+phase1-${CONFIG_NCURSES} += ncurses
+phase1-${CONFIG_GSS} += gss
+
+phase2-y=
+phase2-${CONFIG_BASE} += base 
+phase2-${CONFIG_BUSYBOX} += busybox 
+phase2-${CONFIG_CRON} += cron
+phase2-$(CONFIG_GPIO) += gpio
+phase2-${CONFIG_AZURE_SDK} += azure-iot-sdk
+phase2-$(CONFIG_MARIADB) += mariadb
+
+# Network Applications
+phase2-${CONFIG_NETWORK} += network 
+phase2-${CONFIG_IPTABLES} += iptables 
+phase2-${CONFIG_NET_SNMP} += net-snmp
+phase2-${CONFIG_OPENSSH} += openssh 
+phase2-${CONFIG_DROPBEAR} += dropbear 
+phase2-${CONFIG_STRONGSWAN} += strongswan 
+phase2-${CONFIG_HOTPLUG2} += hotplug2 
+phase2-${CONFIG_NTPCLIENT} += ntpclient 
+phase2-${CONFIG_HTTPD} += httpd 
+phase2-${CONFIG_LIGHTTPD} += lighttpd 
+phase2-${CONFIG_UDHCPD} += udhcpd
+phase2-${CONFIG_WEBADMIN} += webadmin 
+phase2-${CONFIG_MOSQUITTO} += mosquitto 
+phase2-${CONFIG_BIND} += bind
+phase2-${CONFIG_FTPD} += ftpd
+phase2-${CONFIG_FUTURESYSTEM_SSLVPN} += futuresystem_sslvpn
+phase2-${CONFIG_PYTHON} += python
+
+# Wireless applications
+phase2-${CONFIG_WIRELESS_TOOLS} += wireless_tools 
+phase2-${CONFIG_WIFI} += wifi 
+phase2-${CONFIG_AP} += ap
+
+# Daliworks Thingplus-Gateway
+phase2-${CONFIG_NODE} += node
+phase2-${CONFIG_TPGW} += tpgw
+
+# Configuration Utilities
+phase2-${CONFIG_LUA} += lua 
+phase2-${CONFIG_UCI} += uci 
+
+# Debugging Utilities
+phase2-${CONFIG_TCPDUMP} += tcpdump 
+
+# Model
+phase2-${CONFIG_LGUPLUS} += lg-uplus
+phase2-${CONFIG_WIRED} += ${CONFIG_PLATFORM}-wired
+phase2-${CONFIG_CATCHB} += ${CONFIG_PLATFORM}-catchb
 
 LIBS=${phase1-y}
 APPS=${phase2-y}
