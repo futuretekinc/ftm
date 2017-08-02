@@ -14,8 +14,14 @@ if [ ! -e ${package}/.ftm/config ]; then
 		./Configure ${options}
 	elif [ -e 'CMakeLists.txt' ]; then
 		cmake ${options} .
+	else
+		echo "error : Do not know to configuration"
+		exit 1
 	fi
 
+	[ ! -e .ftm ] && mkdir .ftm
+
 	echo `date` > .ftm/config
+
 fi
 
