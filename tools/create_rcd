@@ -8,6 +8,8 @@ if [ -e $1/etc/init.d ]; then
 	if [ ! -e $1/etc/rc.d ]; then
 		mkdir -p $1/etc/rc.d
 	fi
+else
+	mkdir -p $1/etc/init.d
 fi
 
 cd $1/etc/init.d

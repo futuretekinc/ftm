@@ -33,6 +33,7 @@ phase2-${CONFIG_CRON} += cron
 phase2-$(CONFIG_GPIO) += gpio
 phase2-${CONFIG_AZURE_SDK} += azure-iot-sdk
 phase2-$(CONFIG_MARIADB) += mariadb
+phase2-$(CONFIG_KOMPEX_SQLITE_WRAPPER) += KompexSQLiteWrapper
 
 # Network Applications
 phase2-${CONFIG_NETWORK} += network 
